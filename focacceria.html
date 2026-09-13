@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פוקצ'ריה | פוקצות ופיצות טריות מהתנור, קניון עופר גרנד פ״ת</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@400;500;700;900&family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --charcoal:#241811;
+    --charcoal-2:#2f2016;
+    --cream:#f6efe1;
+    --cream-2:#efe4cd;
+    --gold:#c99a3b;
+    --gold-light:#e0bc6c;
+    --olive:#4b5320;
+    --olive-light:#6b7530;
+    --tomato:#9a3324;
+    --ink:#2a2018;
+    --paper-line: rgba(42,32,24,0.14);
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Heebo', sans-serif;
+    background:var(--cream);
+    color:var(--ink);
+    font-weight:400;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{
+    font-family:'Frank Ruhl Libre', serif;
+    margin:0;
+    font-weight:700;
+    letter-spacing:0;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  button{font-family:inherit;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  /* ============ NAV ============ */
+  header.site-nav{
+    position:fixed;
+    top:0; right:0; left:0;
+    z-index:100;
+    padding:20px 0;
+    background:linear-gradient(to bottom, rgba(36,24,17,0.92), rgba(36,24,17,0));
+    transition:background .3s ease, padding .3s ease;
+  }
+  header.site-nav.scrolled{
+    background:var(--charcoal);
+    padding:12px 0;
+    box-shadow:0 6px 24px rgba(0,0,0,0.25);
+  }
+  .nav-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Frank Ruhl Libre', serif;
+    font-size:1.5rem;
+    color:var(--cream);
+    font-weight:700;
+  }
+  .logo em{
+    font-style:normal;
+    color:var(--gold-light);
+  }
+  nav.links{
+    display:flex;
+    gap:36px;
+  }
+  nav.links a{
+    color:var(--cream);
+    font-size:0.95rem;
+    opacity:0.85;
+    position:relative;
+    padding-bottom:4px;
+  }
+  nav.links a:hover{opacity:1;}
+  nav.links a::after{
+    content:'';
+    position:absolute;
+    right:0; bottom:0;
+    width:0; height:1px;
+    background:var(--gold-light);
+    transition:width .25s ease;
+  }
+  nav.links a:hover::after{width:100%;}
+  .nav-cta{
+    background:var(--gold);
+    color:var(--charcoal);
+    padding:10px 22px;
+    border-radius:2px;
+    font-size:0.9rem;
+    font-weight:600;
+    border:none;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .nav-cta:hover{background:var(--gold-light); transform:translateY(-1px);}
+  .burger{display:none; background:none; border:none; color:var(--cream); font-size:1.6rem; cursor:pointer;}
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    background:var(--charcoal);
+    display:flex;
+    align-items:center;
+    overflow:hidden;
+    perspective:1200px;
+  }
+  .hero-bg{
+    position:absolute; inset:0;
+    background-image:url('https://images.pexels.com/photos/30666809/pexels-photo-30666809.jpeg?auto=compress&cs=tinysrgb&w=1920');
+    background-size:cover;
+    background-position:center 60%;
+    z-index:0;
+  }
+  .hero-bg-overlay{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(ellipse 80% 60% at 75% 15%, rgba(201,154,59,0.2), transparent 60%),
+      linear-gradient(180deg, rgba(36,24,17,0.9) 0%, rgba(36,24,17,0.8) 40%, rgba(36,24,17,0.96) 100%);
+    z-index:1;
+  }
+  .hero-noise{
+    position:absolute; inset:0;
+    background-image:radial-gradient(rgba(255,255,255,0.035) 1px, transparent 1px);
+    background-size:3px 3px;
+    pointer-events:none;
+    opacity:0.5;
+    z-index:2;
+  }
+  .hero-inner{
+    position:relative;
+    z-index:3;
+    width:100%;
+    padding-top:110px;
+    padding-bottom:80px;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    gap:40px;
+    align-items:center;
+  }
+  .hero-badge{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    color:var(--gold-light);
+    font-size:0.85rem;
+    letter-spacing:0.02em;
+    margin-bottom:22px;
+    border:1px solid rgba(201,154,59,0.35);
+    padding:7px 16px;
+    border-radius:20px;
+  }
+  .hero-badge b{color:var(--cream); font-weight:600;}
+  .hero h1{
+    color:var(--cream);
+    font-size:clamp(2.6rem, 5vw, 4.4rem);
+    line-height:1.08;
+    margin-bottom:22px;
+  }
+  .hero h1 .line2{color:var(--gold-light);}
+  .hero p.lead{
+    color:rgba(246,239,225,0.78);
+    font-size:1.15rem;
+    line-height:1.7;
+    max-width:480px;
+    margin-bottom:34px;
+  }
+  .hero-actions{
+    display:flex;
+    gap:18px;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .btn-primary{
+    background:var(--gold);
+    color:var(--charcoal);
+    padding:15px 32px;
+    font-size:1rem;
+    font-weight:600;
+    border-radius:2px;
+    display:inline-block;
+    border:none;
+    cursor:pointer;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .btn-primary:hover{background:var(--gold-light); transform:translateY(-2px);}
+  .btn-ghost{
+    color:var(--cream);
+    font-size:1rem;
+    padding:15px 6px;
+    border-bottom:1px solid rgba(246,239,225,0.4);
+  }
+  .btn-ghost:hover{border-color:var(--cream);}
+
+  /* 3D floating stage */
+  .hero-stage{
+    position:relative;
+    height:520px;
+    transform-style:preserve-3d;
+  }
+  .floater{
+    position:absolute;
+    will-change:transform;
+    filter:drop-shadow(0 18px 30px rgba(0,0,0,0.45));
+  }
+  .floater img{
+    display:block;
+    object-fit:cover;
+    width:100%;
+    height:100%;
+  }
+  .f-dough{
+    width:280px; height:210px;
+    top:30px; right:40px;
+    border-radius:10px;
+    border:6px solid var(--cream);
+    overflow:hidden;
+    transform:rotate(-4deg);
+  }
+  .f-tomato{
+    width:120px; height:120px;
+    top:0px; right:320px;
+    border-radius:50%;
+    border:5px solid var(--gold-light);
+    overflow:hidden;
+  }
+  .f-olive{
+    width:110px; height:110px;
+    top:290px; right:300px;
+    border-radius:50%;
+    border:5px solid var(--cream);
+    overflow:hidden;
+  }
+  .f-rosemary{
+    width:150px; height:150px;
+    top:220px; right:-30px;
+    border-radius:50%;
+    border:5px solid var(--gold-light);
+    overflow:hidden;
+  }
+  .f-cheese{
+    width:120px; height:120px;
+    top:370px; right:190px;
+    border-radius:50%;
+    background:var(--gold);
+    color:var(--charcoal);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    border:5px solid var(--cream);
+    text-align:center;
+    line-height:1.1;
+  }
+  .f-cheese .big-num{
+    font-family:'Frank Ruhl Libre', serif;
+    font-size:1.9rem;
+    font-weight:700;
+  }
+  .f-cheese .small-txt{
+    font-size:0.72rem;
+    font-weight:600;
+  }
+
+  /* ============ CRUST DIVIDER ============ */
+  .crust-divider{
+    display:block;
+    width:100%;
+    line-height:0;
+    margin-top:-2px;
+  }
+  .crust-divider svg{width:100%; height:auto; display:block;}
+
+  /* ============ SECTION HEADS ============ */
+  .section{padding:110px 0;}
+  .section-head{
+    max-width:560px;
+    margin-bottom:56px;
+  }
+  .kicker{
+    color:var(--tomato);
+    font-size:0.95rem;
+    font-weight:600;
+    margin-bottom:10px;
+    display:block;
+  }
+  .section-head h2{
+    font-size:clamp(2rem, 3.4vw, 2.9rem);
+    color:var(--ink);
+    line-height:1.2;
+  }
+  .section-head p{
+    margin-top:16px;
+    font-size:1.08rem;
+    line-height:1.75;
+    color:rgba(42,32,24,0.75);
+  }
+
+  /* ============ ABOUT ============ */
+  .about{background:var(--cream);}
+  .about-grid{
+    display:grid;
+    grid-template-columns:0.85fr 1.15fr;
+    gap:70px;
+    align-items:center;
+  }
+  .about-visual{
+    position:relative;
+    aspect-ratio:4/5;
+    background:var(--olive);
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .about-visual img{
+    width:100%; height:100%;
+    object-fit:cover;
+  }
+  .about-visual::after{
+    content:'';
+    position:absolute; inset:0;
+    background:var(--olive);
+    mix-blend-mode:multiply;
+    opacity:0.35;
+  }
+  .about-copy p{
+    font-size:1.08rem;
+    line-height:1.85;
+    color:rgba(42,32,24,0.82);
+    margin-bottom:20px;
+  }
+  .about-facts{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:20px;
+    margin-top:36px;
+    border-top:1px solid var(--paper-line);
+    padding-top:28px;
+  }
+  .fact b{
+    display:block;
+    font-family:'Frank Ruhl Libre', serif;
+    font-size:1.7rem;
+    color:var(--olive);
+  }
+  .fact span{font-size:0.9rem; color:rgba(42,32,24,0.65);}
+
+  /* ============ MENU ============ */
+  .menu{background:var(--cream-2);}
+  .menu-photos{
+    display:grid;
+    grid-template-columns:1.3fr 1fr;
+    gap:18px;
+    margin-bottom:50px;
+  }
+  .menu-photos figure{
+    margin:0;
+    position:relative;
+    border-radius:4px;
+    overflow:hidden;
+  }
+  .menu-photos img{
+    width:100%; height:100%;
+    object-fit:cover;
+    display:block;
+  }
+  .menu-photos .tall{aspect-ratio:5/4;}
+  .menu-photos .side{aspect-ratio:5/4;}
+  .menu-photos figcaption{
+    position:absolute;
+    right:16px; bottom:14px;
+    color:#fff;
+    font-size:0.95rem;
+    font-weight:600;
+    text-shadow:0 2px 10px rgba(0,0,0,0.5);
+  }
+  .menu-photos figure::before{
+    content:'';
+    position:absolute; inset:0;
+    background:linear-gradient(0deg, rgba(0,0,0,0.45), transparent 55%);
+  }
+  .menu-flow{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:0;
+    border-top:1px solid var(--paper-line);
+  }
+  .menu-item{
+    padding:30px 26px;
+    border-bottom:1px solid var(--paper-line);
+    border-left:1px solid var(--paper-line);
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:background .25s ease;
+  }
+  .menu-item:hover{background:rgba(201,154,59,0.1);}
+  .menu-item .m-icon{
+    width:38px; height:38px;
+    color:var(--olive);
+  }
+  .menu-item h3{
+    font-size:1.28rem;
+    color:var(--ink);
+  }
+  .menu-item p{
+    font-size:0.94rem;
+    color:rgba(42,32,24,0.68);
+    line-height:1.6;
+  }
+  .menu-item.wide{grid-column:span 1;}
+  .menu-note{
+    margin-top:34px;
+    font-size:0.95rem;
+    color:rgba(42,32,24,0.6);
+  }
+
+  /* ============ REVIEWS ============ */
+  .reviews{
+    position:relative;
+    background:
+      linear-gradient(180deg, rgba(36,24,17,0.93), rgba(36,24,17,0.93)),
+      url('https://images.pexels.com/photos/34686219/pexels-photo-34686219.jpeg?auto=compress&cs=tinysrgb&w=1600') center/cover;
+    padding:100px 0;
+    overflow:hidden;
+  }
+  .reviews .section-head h2, .reviews .kicker{color:var(--cream);}
+  .reviews .section-head p{color:rgba(246,239,225,0.65);}
+  .rating-row{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:8px;
+  }
+  .rating-row .big{
+    font-family:'Frank Ruhl Libre', serif;
+    font-size:3.2rem;
+    color:var(--gold-light);
+  }
+  .stars{color:var(--gold-light); letter-spacing:2px; font-size:1.1rem;}
+  .marquee-track{
+    display:flex;
+    gap:24px;
+    width:max-content;
+    animation:scrollLeft 38s linear infinite;
+  }
+  .reviews:hover .marquee-track{animation-play-state:paused;}
+  @keyframes scrollLeft{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+  .review-card{
+    width:340px;
+    flex:0 0 auto;
+    background:var(--charcoal-2);
+    border:1px solid rgba(246,239,225,0.08);
+    border-radius:3px;
+    padding:28px;
+  }
+  .review-card .stars{font-size:0.95rem; margin-bottom:14px; display:block;}
+  .review-card p{
+    color:rgba(246,239,225,0.82);
+    font-size:1rem;
+    line-height:1.7;
+    margin-bottom:18px;
+  }
+  .review-card .who{
+    font-size:0.88rem;
+    color:rgba(246,239,225,0.5);
+  }
+
+  /* ============ HOURS + LOCATION ============ */
+  .visit{background:var(--cream);}
+  .visit-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:70px;
+  }
+  .hours-table{
+    border-top:1px solid var(--paper-line);
+  }
+  .hours-row{
+    display:flex;
+    justify-content:space-between;
+    padding:15px 0;
+    border-bottom:1px solid var(--paper-line);
+    font-size:1.02rem;
+  }
+  .hours-row.today{
+    color:var(--tomato);
+    font-weight:600;
+  }
+  .hours-row span:last-child{color:rgba(42,32,24,0.6);}
+  .hours-row.today span:last-child{color:var(--tomato);}
+  .location-card{
+    background:var(--olive);
+    color:var(--cream);
+    padding:40px;
+    border-radius:4px;
+    position:relative;
+    overflow:hidden;
+  }
+  .location-card h3{
+    font-size:1.5rem;
+    margin-bottom:18px;
+  }
+  .location-line{
+    display:flex;
+    gap:12px;
+    margin-bottom:16px;
+    font-size:1rem;
+    line-height:1.6;
+    color:rgba(246,239,225,0.88);
+  }
+  .location-line svg{flex:0 0 auto; width:20px; height:20px; margin-top:2px;}
+  .location-actions{
+    display:flex;
+    gap:14px;
+    margin-top:28px;
+    flex-wrap:wrap;
+  }
+  .btn-light{
+    background:var(--cream);
+    color:var(--olive);
+    padding:12px 22px;
+    border-radius:2px;
+    font-weight:600;
+    font-size:0.92rem;
+  }
+  .btn-light:hover{background:var(--gold-light); color:var(--charcoal);}
+  .btn-outline-light{
+    border:1px solid rgba(246,239,225,0.5);
+    color:var(--cream);
+    padding:12px 22px;
+    border-radius:2px;
+    font-size:0.92rem;
+  }
+  .btn-outline-light:hover{border-color:var(--cream);}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:var(--charcoal);
+    color:rgba(246,239,225,0.6);
+    padding:60px 0 30px;
+  }
+  .footer-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    flex-wrap:wrap;
+    gap:30px;
+    padding-bottom:36px;
+    border-bottom:1px solid rgba(246,239,225,0.1);
+  }
+  footer .logo{margin-bottom:10px;}
+  .footer-cols{display:flex; gap:70px; flex-wrap:wrap;}
+  .footer-col h4{
+    color:var(--cream);
+    font-size:0.95rem;
+    margin-bottom:14px;
+    font-weight:600;
+  }
+  .footer-col a, .footer-col p{
+    display:block;
+    font-size:0.92rem;
+    margin-bottom:9px;
+    color:rgba(246,239,225,0.6);
+  }
+  .footer-col a:hover{color:var(--gold-light);}
+  .fine-print{
+    padding-top:22px;
+    font-size:0.82rem;
+    color:rgba(246,239,225,0.4);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+
+  /* ============ STICKY CTA ============ */
+  .sticky-cta{
+    position:fixed;
+    bottom:24px;
+    left:24px;
+    z-index:90;
+    background:var(--tomato);
+    color:var(--cream);
+    padding:14px 26px;
+    border-radius:30px;
+    font-size:0.95rem;
+    font-weight:600;
+    box-shadow:0 10px 30px rgba(0,0,0,0.3);
+    display:flex;
+    align-items:center;
+    gap:10px;
+    transition:transform .2s ease;
+  }
+  .sticky-cta:hover{transform:translateY(-3px);}
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 900px){
+    nav.links{display:none;}
+    .burger{display:block;}
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-stage{height:340px; margin-top:20px; order:-1;}
+    .f-dough{width:190px; height:140px; right:20px; top:10px;}
+    .f-tomato{width:70px; height:70px; right:220px; top:0;}
+    .f-olive{width:60px; height:60px; right:200px; top:210px;}
+    .f-rosemary{width:100px; height:100px; right:-10px; top:160px;}
+    .f-cheese{width:85px; height:85px; right:120px; top:250px;}
+    .f-cheese .big-num{font-size:1.3rem;}
+    .f-cheese .small-txt{font-size:0.6rem;}
+    .about-grid, .visit-grid{grid-template-columns:1fr; gap:40px;}
+    .menu-flow{grid-template-columns:1fr 1fr;}
+    .about-facts{grid-template-columns:1fr 1fr;}
+    .section{padding:70px 0;}
+  }
+  @media (max-width: 560px){
+    .wrap{padding:0 20px;}
+    .menu-flow{grid-template-columns:1fr;}
+    .hero-actions{flex-direction:column; align-items:flex-start;}
+    .sticky-cta span{display:none;}
+    .sticky-cta{padding:16px; border-radius:50%;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .floater{transition:none !important;}
+    .marquee-track{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-nav" id="siteNav">
+  <div class="wrap nav-inner">
+    <div class="logo">פוקצ'<em>ריה</em></div>
+    <nav class="links">
+      <a href="#about">הסיפור שלנו</a>
+      <a href="#menu">התפריט</a>
+      <a href="#reviews">ביקורות</a>
+      <a href="#visit">איך מגיעים</a>
+    </nav>
+    <button class="nav-cta" onclick="location.href='tel:0364487976'">03-644-8797</button>
+    <button class="burger" aria-label="תפריט">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-overlay"></div>
+  <div class="hero-noise"></div>
+  <div class="wrap hero-inner">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">★ <b>4.7</b> מתוך 706 ביקורות בגוגל</div>
+        <h1>פוקצה טרייה מהתנור,<br><span class="line2">בלב הקניון הגדול</span></h1>
+        <p class="lead">בצק שתפח כמו שצריך, שמן זית איכותי וטופינגים שמתחלפים לפי העונה. פוקצ'ריה זו הפינה האיטלקית שלכם בעופר גרנד פתח תקווה — לארוחת צהריים מהירה או ערב שלם עם חברים.</p>
+        <div class="hero-actions">
+          <a class="btn-primary" href="tel:0364487976">להזמנת שולחן</a>
+          <a class="btn-ghost" href="#menu">לתפריט המלא</a>
+        </div>
+      </div>
+
+      <div class="hero-stage" id="heroStage">
+        <div class="floater f-dough" data-depth="0.18">
+          <img src="https://images.pexels.com/photos/30666809/pexels-photo-30666809.jpeg?auto=compress&cs=tinysrgb&w=800" alt="פוקצה טרייה עם עשבי תיבול">
+        </div>
+        <div class="floater f-tomato" data-depth="0.5">
+          <img src="https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg?auto=compress&cs=tinysrgb&w=400" alt="פיצה מהתנור">
+        </div>
+        <div class="floater f-olive" data-depth="0.35">
+          <img src="https://images.pexels.com/photos/26833230/pexels-photo-26833230.jpeg?auto=compress&cs=tinysrgb&w=400" alt="גבינת בוראטה עם עגבניות">
+        </div>
+        <div class="floater f-rosemary" data-depth="0.28">
+          <img src="https://images.pexels.com/photos/3214160/pexels-photo-3214160.jpeg?auto=compress&cs=tinysrgb&w=400" alt="פסטה עם פטריות">
+        </div>
+        <div class="floater f-cheese" data-depth="0.42">
+          <span class="big-num">4.7</span>
+          <span class="small-txt">706 ביקורות</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="crust-divider">
+    <svg viewBox="0 0 1440 90" preserveAspectRatio="none">
+      <path d="M0,40 C60,10 110,70 170,45 C230,20 280,75 340,50 C400,25 450,80 510,55 C570,30 620,78 680,52 C740,26 790,75 850,48 C910,21 960,72 1020,50 C1080,28 1130,76 1190,52 C1250,28 1300,70 1360,48 C1400,34 1420,44 1440,40 L1440,90 L0,90 Z" fill="#f6efe1"/>
+    </svg>
+  </div>
+</section>
+
+<section class="about section" id="about">
+  <div class="wrap about-grid">
+    <div class="about-visual">
+      <img src="https://images.pexels.com/photos/905847/pexels-photo-905847.jpeg?auto=compress&cs=tinysrgb&w=900" alt="פיצה אפויה בתנור עצים">
+    </div>
+    <div class="about-copy">
+      <span class="kicker">הסיפור שלנו</span>
+      <h2>לא עוד דוכן פיצה בקניון</h2>
+      <p>פוקצ'ריה נולדה מתוך אהבה לבצק איטלקי אמיתי — כזה שתופח לאט, נאפה חם ומוגש עם שמן זית זורם. בקומת המסעדות של עופר גרנד פתח תקווה בנינו פינה שקטה יחסית, עם שולחנות לזוגות ולמשפחות, ותפריט שמתמקד באיכות ולא בכמות.</p>
+      <p>הצוות שלנו מכין את הבצקים במקום מדי בוקר, ואת הרטבים והפסטות מבשלים טרי לאורך היום. גם כשבקניון עמוס, אנחנו משתדלים לשמור על הקצב הביתי שלנו.</p>
+      <div class="about-facts">
+        <div class="fact"><b>4.7</b><span>דירוג ממוצע בגוגל</span></div>
+        <div class="fact"><b>706</b><span>ביקורות של סועדים</span></div>
+        <div class="fact"><b>₪50–100</b><span>מחיר משוער לסועד</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu section" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">מהתפריט</span>
+      <h2>הבחירות שהסועדים חוזרים בשבילן</h2>
+      <p>מבחר מצומצם ומתחלף, כדי שכל צלחת תצא מהמטבח טרייה ולא ממתינה.</p>
+    </div>
+
+    <div class="menu-photos">
+      <figure class="tall">
+        <img src="https://images.pexels.com/photos/3214160/pexels-photo-3214160.jpeg?auto=compress&cs=tinysrgb&w=1000" alt="פסטה עם פטריות ופרמזן">
+        <figcaption>פסטה פונג'י</figcaption>
+      </figure>
+      <figure class="side">
+        <img src="https://images.pexels.com/photos/26833230/pexels-photo-26833230.jpeg?auto=compress&cs=tinysrgb&w=800" alt="גבינת בוראטה עם עגבניות שרי">
+        <figcaption>גבינת בוראטה</figcaption>
+      </figure>
+    </div>
+
+    <div class="menu-flow">
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><circle cx="9" cy="9" r="1" fill="currentColor"/><circle cx="15" cy="10" r="1" fill="currentColor"/><circle cx="11" cy="15" r="1" fill="currentColor"/></svg>
+        <h3>פוקצה פינולי</h3>
+        <p>הפוקצה החתימה שלנו — בצק תפוח, שמן זית ומגע מתוק־חמצמץ של פטל.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+        <h3>פסטה פונג'י</h3>
+        <p>פסטה עשירה עם תערובת פטריות מוקרמלות ומגע שמנת עדין.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18"/></svg>
+        <h3>פיצה פטריות</h3>
+        <p>בצק דק ופריך, שכבת פטריות נדיבה וגבינות נמסות.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3c-3 3-6 6-6 10a6 6 0 0012 0c0-4-3-7-6-10z"/></svg>
+        <h3>פסטה עם ארטישוק</h3>
+        <p>לבבות ארטישוק, שום קונפי ועשבי תיבול טריים על פסטה אל דנטה.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="7"/></svg>
+        <h3>גבינת בוראטה</h3>
+        <p>בוראטה קרמית מוגשת עם עגבניות טריות ולחם פוקצה חם לטבילה.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/></svg>
+        <h3>רביולי 4 גבינות</h3>
+        <p>רביולי במילוי ארבע גבינות, מוגש ברוטב חמאה ומרווה.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M5 6h14M5 18h9"/></svg>
+        <h3>סלט שוק</h3>
+        <p>ירקות עונתיים טריים, מוקפצים ומוגשים עם רוטב בית קליל.</p>
+      </div>
+      <div class="menu-item">
+        <svg class="m-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 10h10v6a5 5 0 01-10 0v-6z"/><path d="M17 11h1a2 2 0 010 4h-1"/></svg>
+        <h3>שוקו עם פרלינים</h3>
+        <p>שוקו חם וקטיפתי, מוגש עם פרלינים לסיום מתוק.</p>
+      </div>
+    </div>
+    <p class="menu-note">התפריט המלא כולל גם תפריט קפה ומגוון פוקצות נוספות — זמין בבית העסק.</p>
+  </div>
+</section>
+
+<section class="reviews" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="kicker">מה אומרים הסועדים</span>
+      <div class="rating-row">
+        <span class="big">4.7</span>
+        <div>
+          <span class="stars">★★★★★</span><br>
+          <span style="color:rgba(246,239,225,0.6); font-size:0.9rem;">מבוסס על 706 ביקורות בגוגל</span>
+        </div>
+      </div>
+      <h2 style="margin-top:20px;">חוויה שגורמת לחזור</h2>
+    </div>
+  </div>
+
+  <div class="marquee-track">
+    <div class="review-card"><span class="stars">★★★★★</span><p>הפוקצה יוצאת מהתנור ממש חמה, והשירות אדיב גם כשבקניון עמוס.</p><span class="who">סועד קבוע</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הבוראטה עם הלחם החם היא שילוב שלא הייתי מוותר עליו.</p><span class="who">סועדת</span></div>
+    <div class="review-card"><span class="stars">★★★★☆</span><p>מקום נעים לארוחת צהריים באמצע קניות, לא רועש מדי.</p><span class="who">סועד</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הרביולי ארבע גבינות הפך למנה הקבועה שלנו כל פעם מחדש.</p><span class="who">סועדת קבועה</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הפסטה עם הפטריות עשירה בטעם בלי להיות כבדה מדי.</p><span class="who">סועד</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הפוקצה יוצאת מהתנור ממש חמה, והשירות אדיב גם כשבקניון עמוס.</p><span class="who">סועד קבוע</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הבוראטה עם הלחם החם היא שילוב שלא הייתי מוותר עליו.</p><span class="who">סועדת</span></div>
+    <div class="review-card"><span class="stars">★★★★☆</span><p>מקום נעים לארוחת צהריים באמצע קניות, לא רועש מדי.</p><span class="who">סועד</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הרביולי ארבע גבינות הפך למנה הקבועה שלנו כל פעם מחדש.</p><span class="who">סועדת קבועה</span></div>
+    <div class="review-card"><span class="stars">★★★★★</span><p>הפסטה עם הפטריות עשירה בטעם בלי להיות כבדה מדי.</p><span class="who">סועד</span></div>
+  </div>
+</section>
+
+<section class="visit section" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="kicker">שעות פעילות</span>
+      <h2 style="font-family:'Frank Ruhl Libre', serif; font-size:2rem; margin-bottom:26px;">מתי אנחנו פתוחים</h2>
+      <div class="hours-table">
+        <div class="hours-row today"><span>ראשון</span><span>09:00–22:00</span></div>
+        <div class="hours-row"><span>שני</span><span>09:00–22:00</span></div>
+        <div class="hours-row"><span>שלישי</span><span>09:00–22:00</span></div>
+        <div class="hours-row"><span>רביעי</span><span>09:00–22:00</span></div>
+        <div class="hours-row"><span>חמישי</span><span>09:00–23:00</span></div>
+        <div class="hours-row"><span>שישי</span><span>09:00–15:00</span></div>
+        <div class="hours-row"><span>שבת</span><span>לפי שעות הקניון</span></div>
+      </div>
+      <p style="margin-top:18px; font-size:0.9rem; color:rgba(42,32,24,0.55);">ייתכנו שינויים בשעות הפעילות בערבי חג ובחגים.</p>
+    </div>
+
+    <div class="location-card">
+      <h3>איך מגיעים</h3>
+      <div class="location-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21s7-6.5 7-12a7 7 0 10-14 0c0 5.5 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>
+        <span>קניון עופר גרנד פתח תקווה, ז'בוטינסקי 72, קומת המסעדות</span>
+      </div>
+      <div class="location-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
+        <span dir="ltr" style="direction:ltr; unicode-bidi:embed;">03-644-8797</span>
+      </div>
+      <div class="location-line">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        <span>ארוחה עסקית או משפחתית — מומלץ להזמין מקום מראש בסופי שבוע</span>
+      </div>
+      <div class="location-actions">
+        <a class="btn-light" href="tel:0364487976">התקשרו להזמנה</a>
+        <a class="btn-outline-light" href="https://www.google.com/maps/search/?api=1&query=Ofer+Grand+Mall+Petah+Tikva+Jabotinsky+72" target="_blank" rel="noopener">פתחו בגוגל מפות</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">פוקצ'<em>ריה</em></div>
+        <p style="max-width:260px; color:rgba(246,239,225,0.55); font-size:0.92rem; margin-top:8px;">פוקצות ופסטות טריות בלב עופר גרנד פתח תקווה.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>ניווט</h4>
+          <a href="#about">הסיפור שלנו</a>
+          <a href="#menu">התפריט</a>
+          <a href="#reviews">ביקורות</a>
+          <a href="#visit">איך מגיעים</a>
+        </div>
+        <div class="footer-col">
+          <h4>יצירת קשר</h4>
+          <a href="tel:0364487976" dir="ltr" style="unicode-bidi:embed;">03-644-8797</a>
+          <p>ז'בוטינסקי 72, פתח תקווה</p>
+          <p>קניון עופר גרנד, קומת המסעדות</p>
+        </div>
+      </div>
+    </div>
+    <div class="fine-print">
+      <span>© פוקצ'ריה — כל הזכויות שמורות</span>
+      <span>עיצוב ופיתוח לאתר זה</span>
+    </div>
+  </div>
+</footer>
+
+<a class="sticky-cta" href="tel:0364487976">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.13.96.36 1.9.68 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.32 1.85.55 2.81.68A2 2 0 0122 16.92z"/></svg>
+  <span>הזמינו שולחן</span>
+</a>
+
+<script>
+  // Nav background on scroll
+  const nav = document.getElementById('siteNav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, {passive:true});
+
+  // 3D scroll-linked parallax for hero floaters
+  const stage = document.getElementById('heroStage');
+  const floaters = document.querySelectorAll('.floater');
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function updateParallax(){
+    if(reduceMotion) return;
+    const rect = stage.getBoundingClientRect();
+    const stageCenter = rect.top + rect.height/2;
+    const viewportCenter = window.innerHeight/2;
+    const offset = (viewportCenter - stageCenter) * -1;
+
+    floaters.forEach(el => {
+      const depth = parseFloat(el.dataset.depth) || 0.3;
+      const translateY = offset * depth * 0.35;
+      const translateZ = depth * 160 - 80;
+      const rotate = offset * depth * 0.04;
+      el.style.transform = `translate3d(0, ${translateY}px, ${translateZ}px) rotate(${rotate}deg)`;
+    });
+  }
+
+  window.addEventListener('scroll', () => requestAnimationFrame(updateParallax), {passive:true});
+  window.addEventListener('resize', () => requestAnimationFrame(updateParallax));
+  updateParallax();
+</script>
+
+</body>
+</html>
